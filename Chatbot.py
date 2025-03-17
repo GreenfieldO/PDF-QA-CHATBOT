@@ -8,6 +8,7 @@ from langchain_openai import (ChatOpenAI, OpenAIEmbeddings)
 from langchain_chroma.vectorstores import Chroma
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+import hashlib
 import tempfile
 
 # Set page configuration
@@ -114,13 +115,15 @@ try:
             docs_list_split = text_splitter.split_documents(docs_list)
             
             # Create vector store
+            doc_hash = hashlib.md5(_pdf_content).hexdigest()
+            persist_directory = f"./pdf-storage/{doc_hash}"
+
             vectorstore = Chroma.from_documents(documents=docs_list_split,
                                             embedding=embedding,
-                                            persist_directory="./pdf-storage")
-            
-            # Create retriever
+                                            persist_directory=persist_directory)
+                        # Create retriever
             retriever = vectorstore.as_retriever(search_type="similarity",
-                                                search_kwargs={'k': _k_value})
+                                                            search_kwargs={'k': _k_value})
             
             return retriever
         finally:
