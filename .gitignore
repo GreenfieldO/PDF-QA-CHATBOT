@@ -1,0 +1,56 @@
+# Environment and virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+.streamlit/
+.conda/
+
+# PDF files and data
+*.pdf
+intro-to-ai/
+temp_pdf.pdf
+pdf-storage/
+*.
+
+# Cache and temporary files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.ipynb_checkpoints
+.DS_Store
+*.so
+*.dylib
+*.dll
+.idea/
+.vscode/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite3
+
+#!Chatbot.py
+#!README.md
